@@ -1,0 +1,42 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Podari sebya backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --harmony --inspect-brk server.js"
+  },
+  "author": "Alexander Vlasov",
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^5.1.5",
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-jsonschema": "^1.1.6",
+    "express-session": "^1.15.3",
+    "express-validator": "^3.2.0",
+    "glob": "^7.1.2",
+    "jsonwebtoken": "^7.4.1",
+    "moment": "^2.18.1",
+    "moment-timezone": "^0.5.13",
+    "mongodb": "^2.2.28",
+    "mongoose": "^4.10.7",
+    "mongoose-autopopulate": "^0.5.0",
+    "mongoose-deep-populate": "^3.0.0",
+    "npm": "^5.0.3",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-http": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-twitter": "^1.0.4",
+    "passport-vkontakte": "^0.3.2",
+    "solc": "^0.4.11",
+    "web3": "^0.19.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
