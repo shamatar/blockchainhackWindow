@@ -1,27 +1,21 @@
 # README #
 
-В данный момент в репозитории представлена часть Backend-a и примеры смарт-контрактов для финансового инструмента типа "Депозит". Реализация для валюты Eth на языке Solidity.  
+This repo contains example of the proxifing smart-contract (SM) for the bank, that servers as a bank entity in an Ethereum blockchain, as well as examples of proposed deposit/swap contracts.
 
-### Структура смарт-контракта ###
+### Smart-contracts ###
 
-Смарт-контракт IssuingBank - это по факту представительство банка в блокчейне. Имя, ссылка на основные документы, хеш пакета основных документов банка. Хранится адрес основого счета владельца и осуществляется проксирование создания конечных финансовых продуктов.
+SM IssuingBank - bank entity in a blockchain. Minimal set of data - bank name, link to set of main documents and cryptographic hash of this documents.
 
-Смарт-контракт DepositContract - пример финансового инструмента. Банк выпускает публичное предложение, что он хочет секьюретизировать 100 депозитов по 1000 долларов, стоимость каждого - 1 Этереум, предложение действительно с, например, 02/07/2012 в течение 3 дней. Любой участик сети этереум может купить такой контракт,отправив соответствующую сумму. По истечению срока депозита банк выплачивает обратно эквивалент суммы депозита с обратной конертацией в криптовалюту на адрес покупателя. На период депозита банк (адрес-владелец основного контракта типа IssuingBank, описанного выше) может распоряжаться средствами, накопленным на этом смарт-контракте. Такая структура позволяет банку покупать в управление криптовалюту под свои активы, а другой стороне - хеждировать волатильность и даже получать стабильный доход при неизменном курсе.
+SM DepositContract - deposit/swap contract example. Bank makes a public offering for securitization of 100 deposits of 1000 USD equivalent, price for each - 1 ETH, offer (rate) validity - 3 days from 03/07/2017. Any member of Ethereum blockchain can buy one by using corresponding method. At the end of the term bank pays equivalent of final amount (base value + interest over term) in ETH back to buyer. Over a time of contract validity owner of corresponding IssuingBank account can withdraw funds, accumulated on this contract, with only reponsibility - to pay back equivalents at the end of the term. This allow banks to have working funds in ETH, and allows owners of the ETH to hedge there risks and even have a small interest. 
 
-### Общая архитектура ###
+### Architecture ###
 
-Планируемая архитектура подразумевает 2 компонента:
+Smart-contracts are written in Solidity, with a REST API build on top of it using WEB3 + NodeJS + Express v4. So, set a test chain, start GETH, set a gateway address in "server.js" and try to open first bank.
 
-* Набор смарт-контрактов
-* API
+### Team members ###
 
-Смарт-контракты написаны на языке Solidity. Непосредственное их развертывание осуществляется через интерфейс web3 клиента Ethereum. Такая архитектура имеет следующие преимущества:  
+Team members have experience in system programming (C/C++/Linux kernel), modern backend languages (Python/JS) and smart-contracts (Solidity), as well as in financial services (10 years in the largest Russian bank) and financial law.
 
-1. REST API проще так или иначе должен быть реализован для построения фронт-енда
-2. С помощью REST API значительно проще делать промежуточную обработку данных и подключить промежуточные модули, например, менеджмент зыкрытых ключей
-3. Централизованная система менеджмента ключей позволяет быстро обнаруживать утечки или взломы (с помощью мониторинга частоты запросов, например)
-4. REST API значительно проще для понимания существующим участникам рынка (банкам)
+### Terms ###
 
-### Использование кода ###
-
-В случае использования кода (в том числе отдельных функций) из этого репозитория, а также предполагаемой архитектуры - обязательна ссылка на этот репозиторий и следующих лиц: Власов Александр, Мария Михайленко
+In case of use any parts of the code from this repository, including separate functions, link to this repository is mandatory, as well as reference to Vlasov Alexander
